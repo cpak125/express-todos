@@ -4,7 +4,7 @@
 <ul>
   <% todos.forEach(function(t) { %>
   <li>
-    <%= t.todo %>
+    <a href="/todos/<%= t.id %>"> <%= t.todo %> </a>
     -
     <%= t.done ? 'done' : 'not done' %>
   </li>

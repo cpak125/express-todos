@@ -7,4 +7,7 @@ var todosCtrl = require('../controllers/todos');
 //  GET /todos (index functionality - list all todos)
 router.get('/', todosCtrl.index);
 
+// GET /todos/:id (show functionality - show single todo)
+router.get('/:id', todosCtrl.show);
+
 module.exports = router;
