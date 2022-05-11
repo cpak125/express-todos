@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var methodOverride = require('method-override');
 
 var indexRouter = require('./routes/index');
 var todosRouter = require('./routes/todos');
@@ -43,6 +44,9 @@ app.use(cookieParser());
 // static middleware delivers static assests when
 // requested by the browser
 app.use(express.static(path.join(__dirname, 'public')));
+
+// looks at the url for a queryString of whatever we specify
+app.use(methodOverride('_method'));
 
 app.use('/', indexRouter);
 

@@ -4,7 +4,8 @@ module.exports = {
   index,
   show,
   new: newTodo,
-  create
+  create,
+  delete: deleteTodo
 };
 
 function index(req, res) {
@@ -28,9 +29,12 @@ function newTodo(req, res) {
 function create(req, res) {
   // req.body is provided by urlencoded middleware 
   // properties on req.body match the values of input's name attributes
-  console.log(req.body);
-  req.body.done = false;
   Todo.create(req.body);
+  res.redirect('/todos');
+}
+
+function deleteTodo(req, res) {
+  Todo.deleteOne(req.params.id);
   res.redirect('/todos');
 }
 

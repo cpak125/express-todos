@@ -16,4 +16,7 @@ router.post('/', todosCtrl.create);
 // GET /todos/:id (show functionality - show single todo)
 router.get('/:id', todosCtrl.show);
 
+// DELETE /todos/:id (delete functionality - delete single todo)
+router.delete('/:id', todosCtrl.delete);
+
 module.exports = router;
