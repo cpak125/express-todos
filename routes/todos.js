@@ -7,6 +7,12 @@ var todosCtrl = require('../controllers/todos');
 //  GET /todos (index functionality - list all todos)
 router.get('/', todosCtrl.index);
 
+//  GET /todos/new (new functionalaity - render "new" form)
+router.get('/new', todosCtrl.new);
+
+// POST /todos (create functionality - create new todo)
+router.post('/', todosCtrl.create);
+
 // GET /todos/:id (show functionality - show single todo)
 router.get('/:id', todosCtrl.show);
 

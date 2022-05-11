@@ -13,10 +13,35 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+/* Mount middleware to the request pipeline
+app.use([path], <middleware fn>, [<middleware fn>, ..]) */
+
+app.use(function(req, res, next) {
+  console.log('Hello SEI!');
+  // app.locals allows us to pass additional 
+  // info/data to a view
+  app.locals.time = new Date().toLocaleTimeString();
+  next();
+});
+
+// logs the info about the request/response
 app.use(logger('dev'));
+
+// will parse the request's body if the data is JSON
+// i.e., the Content-Type header = 'application/json'
+// it adds properties to req.body
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+
+// like .json(), except it looks for and processes
+// Content-Type: x-www-form-urlencoded
+app.use(express.urlencoded({ extended: false }));
+
+// process the cookies header and add prop to the
+// req.cookies object
 app.use(cookieParser());
+
+// static middleware delivers static assests when
+// requested by the browser
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
