@@ -3,4 +3,6 @@
 <h1>Todo #<%= todo.id %></h1>
 <h3><%= todo.todo %></h3>
 <h3>Complete: <%= todo.done ? 'Yes' : 'No' %></h3>
+
+<a href="/todos/<%= todo.id %>/edit">EDIT TODO</a>
 <%- include('../partials/footer') %>
