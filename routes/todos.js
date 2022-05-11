@@ -19,6 +19,9 @@ router.get('/:id', todosCtrl.show);
 // GET /todos/:id/edit (edit functionality - render edit form)
 router.get('/:id/edit', todosCtrl.edit);
 
+// PUT /todos/:id (update functionality - update single todo)
+router.put('/:id', todosCtrl.update);
+
 // DELETE /todos/:id (delete functionality - delete single todo)
 router.delete('/:id', todosCtrl.delete);
 

@@ -8,7 +8,8 @@ module.exports = {
   getAll,
   getOne,
   create,
-  deleteOne
+  deleteOne,
+  update
 };
 
 function getAll() {
@@ -25,6 +26,12 @@ function create(todo) {
   todo.id = Date.now() % 1000000;
   todo.done = false;
   todos.push(todo);
+}
+
+function update(id, newTodo) {
+  id = parseInt(id);
+  const todo = todos.find(todo => todo.id === id);
+  Object.assign(todo, newTodo);
 }
 
 function deleteOne(id) {
